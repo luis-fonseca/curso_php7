@@ -1,0 +1,3 @@
+Para armazenar o usuário e password por um ano,
+git config --global credential.helper "cache --timeout=31536000"
+

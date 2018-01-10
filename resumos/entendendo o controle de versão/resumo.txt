@@ -1,0 +1,22 @@
+Git
+
+Definições:
+- Clonar repositório: Permite clonar um repositório remoto.
+- Repositório: é como um diretório principal do projeto. Um repositório, assim como um diretório, pode conter outros sub diretórios.
+- Iniciar um repositório: para isso é necessário, dentro do diretório principal do projeto, executar o comando git init. Esse comando cria a estrutura necessária para o controle de versão do projeto onde conterá arquivos de cache, configuração (url remota, usuário, entre outros) e etc.
+- Stage Area (Sala de espera): é um local temporário, onde os arquivos aguardam pela confirmação de alterações ou log de alterações, antes do envio, o chamado commit. Após confirmada, essas alterações são "empurradas", o chamado push, para o servidor remoto.
+- Remote Repository: após criado um repositório remoto é necessário especificar, dentro do seu repositório local, qual a url de acesso para ele. Para isso execute o comando git remote add origin url_repositorio_remoto. A palavra origin é uma variável usada como padrão para especificar um primeiro repositório, poderia ser outro nome se houvesse duas origens diferentes. Antes de configurar um repositório, é necessário especificar o nome e e-mail nas configurações ao utilizar git config --global user.name 'nome usuário' e git config --global user.email 'fnsc.luis@gmail.com'. Caso queira especificar um nome de usuário e e-mail a apenas um projeto basta suprimir o argumento --global. O argumento user.email deve ser o mesmo usado pela github.
+- Enviar informações: para enviar as informações locais para o servidor é necessário executar o comando git push [repositorio] [branch]. O repositório que será enviado será o mesmo especificado em origin, no comando git add origin url_repositorio_remoto. Já branch, é em qual ramificação ou pasta principal as informações devem ser enviadas, por padrão é a master. O comando é git push origin master. Antes de enviar as alterações do seu repositório local é necessário criar um commit inicial. 
+- Trazer alterações: é possível trazer as alterações realizadas tanto remotamente quanto por outros usuário para o repositório local. Para isso execute git pull [repositorio] [ramo] e, no caso, ficará git pull origin master.
+
+arquivo -> alteração no arquivo -> git add -> commit -> push
+
+Para realizar confirmações em massa, inclusive quando se remove um arquivo e quer remover do stage area, basta executar git add --all.
+
+- Consolidar/Confirmar as alterações: para confirmar as alterações é necessário executar o comando git commit -m "mensagem sobre o motivo das alterações"
+
+Diferenças entre Github e Bitbucket
+- Github permite saber porcentagem de arquivos em cada linguagem, histórico de alterações, permite colaborar com outros repositórios.
+- Bitbucket permite criar repositórios privados, até 5 usuários.
+
+Ao criar um repositório, é recomendável criar um arquivo README para dar orientações sobre para o que é o repositório, qual objetivo e como é possível contribuir, além de suas regras para colaboração. Além disso, é possível, antes de concluir a configuração do repositório, especificar quais arquivos serão ignorados quando fizer um push do projeto. Arquivos de senha, dependências do composer, diretórios, podem ter o envio ignorado. Nessa caixa de seleção, para ignorar os arquivos, é possível selecionar alguns padrões, como, por exemplo, o composer, dessa forma, o diretório com as dependências não serão enviadas.

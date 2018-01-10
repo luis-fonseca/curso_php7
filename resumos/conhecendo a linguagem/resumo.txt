@@ -1,0 +1,50 @@
+Variáveis de memória
+
+Variáveis guardam valores temporários, destinados a execução do programa, na memória. Regras:
+ - começam com $ seguido pelo nome da variável, por exemplo, $minhaVariavel. 
+ - Não devem começar com número, embora possam conter dígitos no meio ou fim do nome;
+ - Não podem conter caracteres especiais ou espaços. A exceção é o underline;
+ - São case sensitive;
+ - Não podem usar palavras reservadas.
+
+Como sugestão, os nomes de variáveis compostas, devem seguir o estilo camel case, iniciar cada palavra com maiúsculo, conforme exemplo:
+
+$minhaVariavel = 'Foobar';
+
+Para saber o tipo, tamanho e texto da variável basta usar,
+
+var_dump(nome_variavel);
+
+Tipos de variável:
+ - texto: são delimitadas por aspas simples ou duplas. A diferença é que, no caso de aspas simples, as variáveis internas não são resolvidas. 
+
+Algumas vezes, quando as variáveis armazenam objetos, é necessário apagá-la (ela deixa de existir, elimina da memória), antes de um novo uso. Para realizar isso basta,
+
+unset(var1, var2, ..., varn);
+
+Para identificar se uma variável existe, antes de imprimir o seu valor, basta usar a instrução isset($variavel).
+
+if (isset($var)) ...
+
+Concatenação
+Para concatenar dois valores use o operador . (ponto). Por exemplo, 
+
+$nomeCompleto = 'Paulo Arantes';
+$dataNascimento = '01/01/1970';
+
+Antes da versão 7, o PHP realizava conversões automáticas de tipo. Essa era uma feature ruim pois, caso usasse o operador + e tentasse realizar a soma do valor dessa variável com um número, o interpretador ignorava parte da string e utilizava o restante da informação fornecendo um número.
+
+$nome = 'João 10';
+$numero = 50;
+
+echo $nome + $numero; // imprime 60
+  
+
+echo $nomeCompleto . " nasceu em " . $dataNascimento; // imprime Paulo Arantes nasceu em 01/01/1970
+
+Comentários
+Ajudam a documentar um programa e são ignorados pelo interpretador. Podem ser de 3 tipos:
+ - # ou /: comentários de fim de linha;
+ - /* */: comentários de múltiplas de linhas;
+
+
