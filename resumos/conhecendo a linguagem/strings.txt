@@ -1,0 +1,61 @@
+Strings
+
+Cadeia de caracteres delimitadas por aspas '' ou "". Ao usar uma string delimitada por aspas "" é possível interpolar valores,
+
+$nome = "Luís";
+echo "Olá {$nome}"; // imprime "Olá Luís"
+
+no caso de aspas simples '' a string será impressa como uma literal,
+
+$nome = "Luís";
+echo 'Olá {$nome}'; // imprime "Olá {$nome}"
+
+Funções
+
+strtoupper: Converter para maiúscula. Não converte caracteres especiais.
+$nome = 'luís';
+echo strtoupper($nome);
+
+mb_strtoupper: Converter para maiúscula. Converte caracteres especiais.
+$nome = 'luís';
+echo mb_strtoupper($nome);
+
+strtolower: Converter para minúscula. Não converte caracteres especiais.
+$nome = 'LUÍS';
+echo strtolower($nome);
+
+mb_strtolower: Converter para minúscula. Não converte caracteres especiais.
+$nome = 'LUÍS';
+echo mb_strtoupper($nome);
+
+ucwords: Converter a primeira letra de cada palavra em maiúscula. Não funciona com caracteres especiais.
+$nome = 'luís fonseca';
+echo ucwords($nome);
+
+ucfirst: Converter a primeira letra em maiúscula. Não funciona com caracteres especiais.
+$nome = 'luís fonseca';
+echo ucwords($nome);
+
+mb_convert_case: Converter a primeira letra de cada palavra em maiúscula. Funciona com caracteres especiais.
+$nome = 'luís fonseca';
+echo mb_convert_case($a, MB_CASE_TITLE);
+
+str_replace: Troca uma string por outra.
+$empresa = 'hcode';
+$empresa = str_replace('o', 0, $empresa);
+$empresa = str_replace('e', 3, $empresa);
+echo $empresa; // imprime hc0d3
+
+str_position: Busca a posição de uma string dentro de outra string.
+$frase = 'Hello World!';
+$q = strpos($frase, 'World');
+var_dump($q); // imprime int(6)
+
+substr: Retorna parte da string.
+$texto = substr($frase, 0, $q); // retorna "Hello "
+
+strlen: Retorna a quantidade de caracteres de uma string. Não funciona corretamente com caracteres especiais.
+echo strlen('Hello');
+
+mb_strlen: Retorna a quantidade de caracteres de uma string. Funciona corretamente com caracteres especiais.
+echo mb_strlen('Hello');
