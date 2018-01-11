@@ -1,0 +1,33 @@
+Variáveis Pré Definidas
+São conhecidas como arrays super globais pré definidas pelo PHP e já vem com alguns recursos. Essas variáveis contém informações externas ou do próprio ambiente. São informações externas coisas que o usuário informa, como dados de formulário. Os dados do formulário são armazenadas nas super globais $_POST e $_GET.
+
+Nota: O nome super global se deve a possibilidade de acessar, não importa onde, essas variáveis.
+
+Nota: URL significa Uniform Resource Locator. São um conjunto de informações necessárias para se levar a alguma parte, incluindo a query string. URI significa Uniform Resource Identifier, são as pequenas partes que compõem a URL, por exemplo, http, https, .org, .info e etc.
+
+[protocolo][dominio][path/caminho/rota][query_string][hash]
+[http://][www.uol.com.br][noticias][?p=1]
+
+Ao acessar a url, http://localhost/curso_php7/variaveis/exemplo-04.php?a=123
+
+e processar pelo código, 
+
+$nome = $_GET['a'];
+var_dump($nome);
+
+temos acesso as variáveis definidas na query string (especificadas, após a ?). Essas variáveis são sempre string e, caso seja necessário converter para outro tipo de variável, será necessário realizar um cast (forçar uma conversão), antes da atribuição.
+
+$nome = (int)$_GET['a'];
+var_dump($nome);
+
+A variável super global $_SERVER pega as variáveis não apenas do servidor, mas do ambiente. Ao tentar buscar um ip do localhost não retornará um ip válido (::1).
+
+Exemplo, 
+
+// ip do usuário que acessará a página
+$ip = $_SERVER['REMOTE_ADDR']; 
+echo $ip;
+
+// retorna o nome da página acessada, útil para criação de logs
+$nomeScript = $ip = $_SERVER['SCRIPT_NAME'];
+echo $nomeScript;

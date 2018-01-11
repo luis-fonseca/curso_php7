@@ -48,3 +48,29 @@ Ajudam a documentar um programa e são ignorados pelo interpretador. Podem ser d
  - /* */: comentários de múltiplas de linhas;
 
 
+Existem oito tipos de dados primitivos divididos em três grupo no PHP. Os tipos básicos são: inteiro, string, ponto flutuante, boolean. Tipos compostos: array e objetos. Por último, os dados especiais que são o resource e null.
+
+// tipos simples
+
+$nome = "Luís";           // string
+$site = 'www.uol.com.br'; // string
+
+$ano = 2018;        // inteiro
+$salario = 5500.99; // ponto flutuante
+$bloqueado = false; // boleano
+
+################################################
+
+// tipos compostos
+
+$frutas = array('abacaxi', 'laranja', 'manga'); // array
+$nascimento = new Date(); // objeto
+
+################################################
+
+// tipos especiais
+$arquivo = fopen('arquivo.txt', 'r'); // resource do tipo stream
+
+$nulo = NULL;
+
+O NULL, em uma comparação próxima é, por exemplo, o ambiente. Em um ambiente vazio, só temos o ar, que seria uma string vazia "". Já no espaço sideral, nem ar tem, o que seria o null. Null é a ausência de valores, já o vazio é que foi iniciado. Outro exemplo seria uma caixa de papelão vazia, ela existe e pode guardar algo, mas se não existir, então é nula. Quando se diz que uma variável é vazia, então o sistema já reserva um espaço para ela na memória.

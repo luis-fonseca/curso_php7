@@ -1,0 +1,47 @@
+Escopo de variável
+
+Significa até onde essa variável será enxergada ou a sua área de atuação. Quando se cria uma variável, ela está no escopo local e será somente enxergada dentro do próprio arquivo, fora das funções. Quando uma variável é criada dentro de uma função, ela será enxergada apenas dentro da função onde foi criada e o seu escopo é delimitado pelas chaves { }.
+
+$nome = 'Luís'; // variável local, é enxergada apenas dentro do arquivo, NÃO de funções
+
+function test1() 
+{ // inicio escopo
+	// por padrão, o escopo de uma função é bloqueado
+	// ou seja, não é possível enxergar uma variável externa
+	echo $nome;
+} // fim escopo
+
+
+A função test2 definirá um outro escopo e tentar chamar uma variável definida em outra função não funcionará.
+
+function test2() 
+{ // inicio escopo
+	echo $nome;
+} // fim escopo
+
+Para que uma variável externa seja enxergada dentro de uma função é necessário 'abrir uma janela'. Para isso é necessário definir 'global #nome_da_variavel', de forma que, explicitamente, a função tenha permissão de usar uma variável externa.
+
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$nome = 'Luís';
+
+function test1() {
+	// explicitamente digo que quero usar uma variavel externa
+	// ou seja, $nome aqui e $nome lá fora são as mesmas variáveis
+	global $nome; 
+	echo $nome;
+}
+
+function test2() {
+	echo $nome;
+}
+
+test1();
+test2(); // ao tentar chamar $nome dentro de test3 ocorrerá um erro undefined
+
+A palavra chave global é definida explicitamente por função, ou seja, em todas as funções ela deve ser definida.
+
+Nota: Variáveis super globais não necessitam da palavra chave 'global' para serem enxergadas dentro de uma função ou arquivo.
