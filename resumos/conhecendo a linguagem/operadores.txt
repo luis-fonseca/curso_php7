@@ -1,0 +1,155 @@
+Operadores
+
+Atribuição e Aritméticos
+=     - Atribuição. Atribui um operando a uma variável;
+
+.     - Concatenação. Concatena duas strings;
+.=    - Concatenção/atribuição. Concatena um operando a direita com um valor já existente;
+
++     - Soma. Soma dois operandos;
++=    - Soma/atribuição. Soma com um valor já existente e atribui o resultado a uma variável;
+
+-     - Subtração. Subtrai um operando de outro;
+-=    - Subtração/atribuição. Subtrai com um valor já existente pelo operando à direita e atribui o resultado a uma variável;
+
+*     - Multiplicação. Multiplica dois operandos;
+*=    - Multiplicação/atribuição. Multiplica com um valor já existente pelo operando à direita e atribui o resultado a uma variável;
+
+/     - Divisão. Divide dois operandos;
++=    - Divisão/atribuição. Divide com um valor já existente pelo operando à direita e atribui o resultado a uma variável;
+
+%     - Módulo/Resto. Retorna o resto da divisão de dois operandos;
+%=    - Módulo/atribuição. Divide com um valor existente pelo operando à direita e atribui o resultado a uma variável;
+
+**    - Exponenciação. Multiplica um determinado número 'n' vezes.
+
+Operadores de Comparação
+
+==    - Comparação. Compara um operando a outro.
+===   - Comparação/Tipo. Compara um operando e seu tipo a outro. A diferença em relação ao operador ==  é que este não realiza um cast antes;
+
+!=    - Diferença. Compara um operando a outro;
+!==   - Diferença/Tipo. Compara se um operando e tipo é diferente de outro. A diferença básica é que o interpretador não tentará realizar o cast, antes de verificar se são diferentes.
+
+<     - Menor. Compara se um operando é menor do que o outro.
+<=    - Menor/Igual. Compara se um operando é menor ou igual a outro.
+
+>     - Maior. Compara se um operando é maior do que o outro.
+>=    - Maior/Igual. Compara se um operando é maior ou igual a outro.
+
+<=>   - Spaceship. Realiza uma comparação entre dois operandos. Se o primeiro for maior, então retorna 1; se forem iguais, retorna 0; se o segundo for maior, retorna -1;
+
+??    - Null Coalesce. Realiza uma substituição de valores de variáveis caso um dos valores for NULL. O primeiro valor não NULL será retornado entre 'n' variáveis. 
+
+Operadores Incrementais
+
+++var - Pré incrementa um valor; 
+var++ - Pós Incrementa um valor;
+
+--var - Pré decrementa um valor; 
+var-- - Pós decrementa um valor;
+
+Precedência de operadores.
+
+()    - 
+
+//////// Exemplos
+
+// atribuição
+$a = 5 + 1;
+echo $a; // imprime 6
+
+// concatenação
+echo '<br>';
+echo 'olá ' . 'mundo.'; // imprime 'olá mundo'
+
+// concatenação e atribuição
+$a = 'olá ';
+$a .= 'mundo!';
+echo '<br>';
+echo $a; // imprime 'olá mundo'
+
+<?php
+
+//////// Exemplos
+
+// soma/atribuição
+$valorTotal = 0;
+$valorTotal += 100;
+$valorTotal += 25;
+
+echo $valorTotal;
+echo "<br/>";
+
+// subtração/atribuição
+$valorTotal -= 10;
+
+echo $valorTotal;
+echo "<br/>";
+
+// multiplicação/atribuição
+$valorTotal *= .1;
+echo $valorTotal;
+echo "<br/>";
+
+// módulo/atribuição
+$valor = 11;
+$valor %= 2;
+
+echo $valor;
+echo "<br/>";
+
+// exponenciação/atribuição
+$valor = 2;
+$valor **= 3;
+
+echo $valor;
+echo "<br/>";
+
+$a = 30;
+$b = 55;
+
+echo '55 == 30:  ';
+var_dump($a == $b); // false, compara valor e não o tipo
+echo "<br/>"; 
+
+echo '55 === 30: ';
+var_dump($a === $b); // false, compara valor e tipo
+echo "<br/>"; 
+
+echo '55 > 30:  ';
+var_dump($a > $b); // false
+echo "<br/>"; 
+
+echo '55 >= 30:  ';
+var_dump($a >= $b); // false
+echo "<br/>"; 
+
+echo '55 < 30:  ';
+var_dump($a < $b); // true
+echo "<br/>"; 
+
+echo '55 <= 30:  ';
+var_dump($a <= $b); // true
+echo "<br/>"; 
+
+echo '55 != 30';
+var_dump($a != $b); // true, compara valor
+echo "<br/>"; 
+
+echo '55 !== 30';
+var_dump($a !== $b); // true, compara valor e tipo
+echo "<br/>"; 
+
+// operador Spaceship
+$a = 55;
+$b = 10;
+
+echo $a <=> $b; // será impresso 1
+
+// operador Null Coalesce
+$a = NULL;
+$b = 10;
+$c = NULL;
+
+echo $a ?? $b ?? $c; // será impresso 10
