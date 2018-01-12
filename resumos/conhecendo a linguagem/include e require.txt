@@ -1,0 +1,23 @@
+Include e Require
+
+Permite que um determinado código seja incluído em vários arquivos. Recomenda-se não subir ou descer muitos diretórios em busca de um arquivo. A inclusão de um arquivo começa sempre a partir de onde o script é executado,
+
+include 'exemplo-01.php'; // procura no mesmo diretório 
+
+$resultado = somar(10, 20);
+var_dump($resultado);
+
+include 'inc/exemplo-01.php'; // desce um diretório e faz a inclusão
+
+$resultado = somar(10, 20);
+var_dump($resultado);
+
+A diferença entre include e require é que esse último obriga que o arquivo exista e que funcione corretamente. Caso não exista ou não funcione direito, o código para e gera um erro fatal. No caso do include, se o arquivo não existir ou conter erros, o código continua a sua execução. Além disso, existe um diretório chamado INCLUDE_PATH que permite ao PHP incluir arquivos a partir de lá. Esse diretório, por padrão, é configurável no PHP (no arquivo de configuração php.ini, diretório onde indica quais os arquivos principais do PHP). O include também permite fazer a inclusão código remotos.
+
+Nota: É altamente não recomendável utilizar o include para a inclusão de arquivos remotos, include dinâmico, devido a possibilidade de inclusão de um arquivo malicioso.
+
+Nota: O include_path é útil para códigos compartilhados configurados em um diretório de servidor.
+
+O include/require_once é útil para incluir apenas uma vez determinado arquivo. 
+
+Nota: No PHP7 erros fatais se tornarão exceções de forma a permitir o uso do try/catch para o tratamento de erros.
