@@ -1,0 +1,60 @@
+FOR
+
+Possui um comportamento semelhante ao C. A sintaxe básica é,
+
+for (expr1; expr2; expr3)
+  statement
+  
+A primeira expressão (expr1) é avaliada (executada), uma vez, incondicionalmente, no início do laço.
+
+No começo de cada iteração a expr2 é avaliada. Se a avaliada como TRUE, o laço continuará e as instruções aninhada serão executadas. Se avaliada como FALSE, a execução do laço terminará.
+
+No final de cada iteração, a expr3 é avaliada (executada).
+
+Cada uma das expressões podem ser vazias ou conter múltiplas expressões separadas por vírgulas. Na expr2, todas as expressões separadas por vírgula são avaliadas mas o resultado é obtido da última parte. Se a expr2 estiver vazia significa que o laço deve ser executado indefinidamente (O PHP considera implicitamente como TRUE, igual ao C). Isto não é inútil como se imagina, pois muitas vezes deseja-se interromper o laço utilizando a instrução break ao invés de usar a expressão verdade do for.
+
+Exemplo 1,
+
+for ($i = 0; $i < 10; $i++) {
+  echo "$i <br>";
+}
+
+Exemplo 2,
+
+for ($i = 0; $i < 100; $i += 5) {
+  echo "$i <br>";
+}
+
+Exemplo 3,
+
+for ($ano = date("Y"); $ano >= (date("Y") - 100); $ano--) {
+    echo "$ano \n";
+}
+
+
+echo "<select>";
+
+for ($ano = date('Y'); $ano >= date('Y') - 100; $ano--) {
+	echo "<option value='$ano'>" . $ano . "</option>";
+}
+
+echo "</select>";
+
+CONTINUE
+Faz com que a execução do laço atual continue e não executa as instruções posteriores dentro do laço FOR.
+
+for ($i = 0; $i <= 1000; $i += 5) {
+    if ($i > 200 && $i < 800) continue;
+    echo "$i \n";
+}
+
+BREAK
+
+Faz com que a execução do laço seja interrompido.
+
+for ($i = 0; $i <= 1000; $i += 5) {
+    if ($i > 200 && $i < 800) continue;
+    echo "$i \n";
+    if ($i === 900) break;
+}
+
