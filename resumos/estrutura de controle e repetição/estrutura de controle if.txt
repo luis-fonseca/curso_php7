@@ -1,0 +1,42 @@
+IF
+
+Permite alterar o fluxo natural de um programa. A estrutura básica é
+
+if ($expressao) {
+}
+
+ou, mais complexo
+
+if ($condicao) {
+  // código para execução
+} elseif/else if ($condicao) {
+  // código para execução
+} else {
+  // código para execução
+}
+
+Exemplo
+
+$qualASuaIdade = 75;
+
+$idadeCrianca = 12;
+$idadeMaior = 18;
+$idadeMelhor = 65;
+
+if ($qualASuaIdade < $idadeCrianca) {
+  echo "Criança";
+} else if ($qualASuaIdade < $idadeMaior) {
+  echo "Adolescente";
+} else if ($qualASuaIdade < $idadeMelhor) {
+  echo "Adulto";
+} else {
+  echo "Idoso";
+}
+
+Operador Ternário
+
+Teste de IF e ELSE mais simples com o operador ternário.
+
+<$condicao> ? <verdadeiro> : <falso>
+
+echo ($qualASuaIdade < $idadeMaior) ? "Menor de idade" : "Maior de idade";
