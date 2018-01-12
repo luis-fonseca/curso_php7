@@ -1,0 +1,26 @@
+FOREACH
+
+O construtor foreach fornece uma maneira fácil de iterar sobre arrays. O foreach funciona somente em arrays e objetos, e emitirá um erro ao tentar usá-lo em uma variável com um tipo de dado diferente ou em uma variável não inicializada. Possui duas sintaxes:
+
+foreach (array_expression as $value)
+    statement
+    
+foreach (array_expression as $key => $value)
+    statement
+    
+A primeira forma, itera sobre arrays informados na array_expression. A cada iteração, o valor do elemento atual é atribuído a $value e o ponteiro interno do array avança uma posição (então, na próxima iteração, se estará olhando para o próximo elemento).
+
+A segunda forma var, adicionalmente, atribuir a chave do elemento corrente a variável $key a cada iteração.
+
+Exemplos
+
+$meses = [
+    "Janeiro", "Fevereiro", "Março",
+    "Maio", "Abril", "Junho",
+    "Julho", "Agosto", "Setembro",
+    "Outubro", "Novembro", "Dezembro"
+];
+
+foreach($meses as $chave => $mes) {
+    echo "A chave {$chave} pertence ao mês atual é {$mes} \n";
+}
