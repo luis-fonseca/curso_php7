@@ -1,0 +1,58 @@
+Switch Case
+
+A declaração switch é similar a uma série de declarações IF na mesma expressão. Em muitos casos, se deseja comparar as mesmas variáveis (ou expressões), com diferentes valores, e executar pedaços diferentes de código dependendo de qual valor ela É IGUAL. 
+
+Estrutura básica
+
+$diaDaSemana = date('w');
+var_dump($diaDaSemana);
+
+switch($condicao) {
+	case 'valor 1':
+		// instruções
+		break; // necessario para não executar codigos abaixo
+	case 'valor 2':
+		// instruções
+		break;
+	default:
+		// quando nenhuma dos cases acima funcionou	
+}
+
+No PHP existem funções para se colocar os dias da semana. set_locale para informar que estamos no brasil e colocar o idioma em português e o strtotime.
+
+Exemplo,
+
+$diaDaSemana = date('w');
+var_dump($diaDaSemana);
+
+switch($diaDaSemana) {
+	case 0:
+		echo 'Domingo';
+		break; 
+	
+	case 1:
+		echo 'Segunda-feira';
+		break; 
+	
+	case 2:
+		echo 'Terça-feira';
+		break; 
+		
+	case 3:
+		echo 'Quarta-feira';
+		break; 
+	
+	case 4:
+		echo 'Quinta-feira';
+		break; 
+	
+	case 5:
+		echo 'Sexta-feira';
+		break; 
+	
+	case 6:
+		echo 'Sábado';
+		break; 
+	
+}
+
