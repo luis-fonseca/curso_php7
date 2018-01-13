@@ -1,0 +1,45 @@
+ARRAYS
+
+São estruturas que armazenam múltiplos valores em uma variável. Cada valor tem um índice número associado e, esse índice, como em 0. Quando o array possui apenas uma dimensão, ele se chama vetor.
+
+Para se imprimir um array com todos os seus valores usa-se a instrução print_r.
+
+Exemplos,
+
+$frutas = array('laranja', 'abacaxi', 'melancia');
+
+// exibe o array e sua estrutura
+print_r($frutas);
+
+
+
+// Trabalhando com um array bidimensional
+$carros[0][0] = 'GM';
+$carros[0][1] = 'Cobalt';
+$carros[0][2] = 'Onix';
+$carros[0][3] = 'Camaro';
+
+$carros[1][0] = 'Ford';
+$carros[1][1] = 'Fiesta';
+$carros[1][2] = 'Fusion';
+$carros[1][3] = 'Eco Sport';
+
+echo $carros[0][3] . '<br />'; // imprime Camaro
+echo end($carros[1]); // traz o último da posição
+
+
+$pessoas = array();
+
+array_push($pessoas, array(
+	'nome'	=> 'João',
+	'idade'	=> 20
+));
+
+array_push($pessoas, array(
+	'nome'	=> 'Gláucio',
+	'idade'	=> 25
+));
+
+print_r($pessoas);
+print_r($pessoas[0]); // Dados do João
+print_r($pessoas[0]['nome']); // Nome do João

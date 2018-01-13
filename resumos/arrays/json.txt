@@ -1,0 +1,47 @@
+JSON (JavaScript Object Notation)
+
+Facilita a interoperabilidade de sistemas (integração). Existem algumas funções no PHP para converter (serializar) arrays em PHP para JSON e vice versa.
+
+JSON_ENCODE
+Converter um array em JSON.
+
+$pessoas = array();
+
+array_push($pessoas, array(
+	'nome'	=> 'João',
+	'idade'	=> 20
+));
+
+array_push($pessoas, array(
+	'nome'	=> 'Gláucio',
+	'idade'	=> 25
+));
+
+
+// utf8_encode codifica uma string ISO-8859-1 para UTF-8.
+
+echo utf8_encode(json_encode($pessoas));
+
+
+JSON_DECODE
+Converter um JSON em array.
+
+$pessoas = array();
+
+array_push($pessoas, array(
+	'nome'	=> 'João',
+	'idade'	=> 20
+));
+
+array_push($pessoas, array(
+	'nome'	=> 'Gláucio',
+	'idade'	=> 25
+));
+
+
+// utf8_encode codifica uma string ISO-8859-1 para UTF-8.
+echo utf8_encode(json_encode($pessoas));
+
+
+$v = '[{"nome":"Jo\u00e3o","idade":20},{"nome":"Gl\u00e1ucio","idade":25}]';
+print_r(json_decode($v)); // true para transformar em array, caso contrário vira objeto
