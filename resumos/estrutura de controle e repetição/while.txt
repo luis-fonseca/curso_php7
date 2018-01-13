@@ -1,0 +1,45 @@
+WHILE
+
+Laços while são os mais simples tipos de laços do PHP. Possui comportamento semelhante ao C. O formato básico de uma declaração while é:
+
+while (expr)
+    statement
+O propósito da declaração while é simples. Ele dirá ao PHP para executar as declarações aninhadas repetidamente, enquanto a expressão do while forem avaliadas como TRUE. O valor da expressão é checado a cada vez que o laço é iniciado, então, mesmo seu valor mude durante a a execução das declarações aninhadas, a execução não será interrompida até o final da iteração ( cada vez que o PHP executa as declarações dentro do laço é uma iteração). Entretanto, se a expressão do while for avaliada como FALSE desde o início, as declarações aninhadas não serão executadas nenhuma vez.
+
+Similar a declaração if, pode-se agrupar múltiplas declarações no mesmo laço while delimitando o grupo de declarações por chaves, ou utilizando a sintaxe alternativa:
+
+while (expr):
+    statement
+    ...
+endwhile;
+
+O While é muito utiliza em banco de dados, pois não se sabe quantos registros serão recuperados de uma consulta.
+
+Exemplos
+
+$condicao = true;
+
+while ($condicao) {
+	$numero = rand(1, 10);
+	if ($numero === 3) {
+		echo "TRÊS !!!";
+		break;
+	}
+	echo $numero;
+}
+
+
+DO WHILE
+
+Este laço, semelhante ao while, porém executa uma vez, antes de testar a condição.
+
+Exemplos,
+
+$total = 150;
+$desconto = 0.9;
+
+do {
+	$total *= $desconto;
+} while($total > 100);
+
+echo $total;
