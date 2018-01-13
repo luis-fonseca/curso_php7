@@ -1,0 +1,25 @@
+Constantes e Variáveis
+
+Variável é um objeto (uma posição, frequentemente localizada na memória) capaz de reter e representar um valor ou expressão. As variáveis existem em tempo de execução e são associadas a nomes, os quais são chamados de identificadores.
+
+Uma constante é semelhante a uma variável, porém, após definida uma vez, ela permanecerá com o mesmo valor até o final da execução do script.
+
+Exemplos de constantes são: ip de servidor, nome e senha de acesso ao banco de dados, língua de exibição de uma página.
+
+Uma constante, ao ser criada, pode ser case sensitive, mas, por convenção, usa-se maiúscula. Para se criar uma constante usa-se a palavra chave define().
+
+Exemplos,
+
+define('SERVIDOR', '127.0.0.1'); // primeiro o nome e depois o valor
+echo SERVIDOR; // sem o $
+
+No PHP 7 é possível usar arrays constantes.
+
+// o terceiro argumento, true, permite que uma constante seja case insensitive
+define('BANCO_DE_DADOS', ['127.0.0.1', 'root', 'pass', 'test'], true);
+print_r(BANCO_DE_DADOS);
+
+Exemplos de constantes
+
+PHP_VERSION; // versão do PHP
+PHP_DIRECTORY_SEPARATOR; // traz o tipo de barra do diretório
