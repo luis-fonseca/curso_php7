@@ -1,0 +1,321 @@
+Funções
+
+Uma função é um trecho de código que pode ser chamado (invocado) de qualquer parte do código para executar uma tarefa e retornar um valor. Uma função pode ser executada qualquer número de vezes. Além disso, ela pode receber qualquer número de argumentos e, por via de regra, retornar um valor (quando não se retorna um valor chamamos de rotina). O valor retornado pode ser um inteiro, string ou um array de valores (que continua como sendo um valor).
+
+Quando uma função é invocada o código em execução é parado e só retorna a execução quando a função chamada retorna o valor.
+
+Nomes de funções seguem as mesmas regras que outros rótulo no PHP. Um nome de função válido começa com uma letra ou um sublinhado, seguido, seguido por qualquer número de letras, números ou sublinhado. Com uma expressão regular, seria expressado com: [a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*.
+
+Sintaxe
+
+<?php
+function foo ($arg_1, $arg_2, /* ..., */ $arg_n)
+{
+    echo "Exemplo de função.\n";
+    return $valor_retornado;
+}
+?>
+
+Return é a palavra chave para retornar um valor. Usa-se return para tornar o código mais abstrato, ter mais liberdade de poder executá-lo em mais lugares.
+
+Exemplos,
+
+1
+
+function ola() {
+	return 'Olá mundo<br>';
+}
+
+echo ola();
+echo strlen(ola());
+
+2
+
+function salario() {
+	return 946.00;
+}
+
+$novoSalario = salario() * 3;
+
+// nota: não é possível chamar uma função como uma variável
+// Também serve para exibir o valor de uma variável(um pouco exagerado ou necessário em um caso bem particular) isso tudo só é valido dentro de aspas duplas.
+// echo "José recebeu 3 salários: {salario() * 3}";
+
+echo "José recebeu 3 salários: {$novoSalario}";
+
+PARÂMETROS DE FUNÇÕES
+São informações adicionais que uma função precisa para ser concluída corretamente.
+
+Exemplos
+
+1
+
+function ola($texto) {
+	return "Olá $texto <br/>";
+}
+
+echo ola("mundo");
+echo ola("Luís");
+echo ola("Mariliza");
+
+2
+
+Com os parâmetros default, não é necessário passar o valor de um parâmetro.
+
+function ola($texto = "mundo", $periodo = "Bom dia.") {
+	return "Olá $texto! $periodo<br/>";
+}
+
+echo ola();
+echo ola("", "Boa noite."); // para não escrever nada, passe um valor vazio
+echo ola("Luís", "Boa tarde.");
+echo ola("Mariliza", "");
+
+3
+
+Caso o primeiro argumento não seja default, mas o segundo sim, então se faz necessário fornecer o primeiro argumento. Argumentos obrigatórios devem sempre estar a esquerda na ordem de chamada.
+
+function ola($texto, $periodo = "Bom dia.") {
+	return "Olá $texto! $periodo<br/>";
+}
+
+4
+
+function ola() {
+	$argumentos = func_get_args(); // recupera os argumentos passados
+	return $argumentos;
+}
+
+var_dump(ola('bom dia', 'luis', 10));
+
+Útil para simular sobrecarga de funções porque, ao receber os parâmetros, é possível verificar a quantidade e tipos.
+
+
+Passagem de parâmetros por valor e referência
+
+Por padrão, argumentos de função são passados por valor (de forma que se você mudar o valor do parâmetro dentro da função, ele não é alterado fora da função). 
+
+Referência em PHP significa acessar o mesmo conteúdo de variável através de vários nomes. Isto não é parecido com os ponteiros em C. Por exemplo não é possível efetuar aritmética de ponteiros com referências, já que elas não são endereços de memória.
+
+Referências são como uma tabela de apelidos simbólicos. No PHP um nome de variável e o conteúdo de variável são diferentes, de forma um mesmo conteúdo pode ter nomes diferentes. A analogia mais próxima são com arquivos e nomes de arquivos Unix - os nomes de variáveis como nomes de arquivos, enquanto que o conteúdo das variáveis os conteúdos dos arquivos. Referências, assim, são como os hardlinks no sistema de arquivo Unix. Ou também pode se pensar como uma pessoa com diferentes nomes.
+
+Exemplos de passagem por valor
+
+//////// 1
+
+$a = 10;
+
+function trocaValor($a) {
+	$a = 0;
+	return $a;
+}
+
+echo $a . '<br/>'; // imprime 10
+
+//////// 2
+
+$a = 10;
+
+function trocaValor($a) {
+	// variável é uma coisa, parâmetro de função é outra
+	// são guardadas em um espaço de memória diferente
+	// escopo, o que acontece na função vale apenas dentro da função
+	$a += 50;
+	return $a;
+}
+
+//echo $a . '<br/>'; // imprime 10
+echo trocaValor($a) . '<br/>'; // imprime 60
+echo $a . '<br/>'; // imprime 10
+
+
+Exemplos de passagem por referência
+
+$a = 10;
+
+function trocaValor($a) {
+	// variável é uma coisa, parâmetro de função é outra
+	// são guardadas em um espaço de memória diferente
+	// escopo, o que acontece na função vale apenas dentro da função
+	$a += 50;
+	return $a;
+}
+
+//echo $a . '<br/>'; // imprime 10
+echo trocaValor($a) . '<br/>'; // imprime 60
+echo $a . '<br/>'; // imprime 10
+
+
+Novidades no PHP 7
+
+Recursos obsoletos foram removidos, como a tag asp. Para as funções existem duas grandes novidades, como o tipo de dados do parâmetros e a extensão e o tipo de retorno.
+
+// Exemplo 07
+
+// nome do recurso é declaração de tipos escalares
+function soma(int ...$valores) {
+	// function de forma parecida function_get_args
+	return array_sum($valores);
+}
+
+echo soma(2, 2); // imprime 4
+echo '<br />';
+
+echo soma(25, 32); // 57
+echo '<br />';
+
+echo soma(1.5, 3.2); // será trundo
+echo '<br />';
+
+// Exemplo 08
+
+
+// nome do recurso é declaração de tipos escalares
+// :string especifica o tipo de retorno, no caso string
+function soma(int ...$valores):string {
+	// function de forma parecida function_get_args
+	return array_sum($valores);
+}
+
+var_dump(soma(2, 2)); // imprime 4, string
+echo '<br />';
+
+echo soma(25, 32); // 57
+echo '<br />';
+
+echo soma(1.5, 3.2); // será trundo
+echo '<br />';
+
+
+Funções Recursivas
+Funções que podem chamar a si mesmas. É recomendável usar apenas em situações excepcionais.
+
+// Exemplo 07
+
+<?php
+
+require_once 'config.php';
+
+$hierarquia = array(
+	array(
+		'nome_cargo' => 'CEO',
+		'subordinados' => array(
+			// inicio diretor comercial
+			array(
+				'nome_cargo' => 'Diretor Comercial',
+				'subordinados' => array(
+					// inicio gerente vendas
+					array(
+						'nome_cargo' => 'Gerente de Vendas' 
+					)
+					// fim gerente vendas
+				)
+			),
+			// fim diretor comercial
+			// inicio diretor financeiro
+			array(
+				'nome_cargo' => 'Diretor Financeiro',
+				'subordinados' => array(
+					// inicio gerente contas a pagar
+					array(
+						'nome_cargo' => 'Gerente de Contas a Pagar',
+						'subordinados' =>  array(
+							// inicio supervisor de pagamento
+							array(
+								'nome_cargo' => 'Supervisor de Pagamento'
+							)
+							// fim supervisor de pagamento
+						)
+					),
+					// fim gerente contas a pagar
+					// inicio gerente de compras
+					array(
+						'nome_cargo' => 'Gerente de Contas de Compras',
+						'subordinados' =>  array(
+							// inicio supervisor de suprimentos
+							array(
+								'nome_cargo' => 'Supervisor de Suprimentos',
+								'subordinados' => array(
+									array(
+										'nome_cargo' => 'Funcionário'
+									)
+								)
+							)
+							// fim supervisor de suprimentos
+						)
+					)
+					// fim gerente de compras
+
+				)
+			)
+			// fim diretor financeiro
+		)
+	)
+);
+
+//print_r($pessoa);
+
+function exibir($cargos) {
+
+	$html = '<ul>';
+
+	foreach ($cargos as $cargo) {
+		$html .= '<li>';
+		$html .= $cargo['nome_cargo'];
+
+		// verifica se há subordinados e quantidade
+		// pode-se ter uma chave subordinados definida, mas sem valores
+		if (isset($cargo['subordinados']) && count($cargo['subordinados'] > 0)) {
+			$html .= exibir($cargo['subordinados']);
+		}
+
+		$html .= '</li>';
+	}
+
+
+	$html .= '</ul>';
+
+	return $html;
+}
+
+echo exibir($hierarquia);
+
+
+Funções anônimas
+
+Funções anonimas, também conhecidas como closures, permitem a criação de funções que não tem o nome especificado. Elas são mais úteis como o valor de parâmetros callback, mas podem tem vários outros usos.
+
+Funções anônimas são implementadas utilizando a classe Closure
+
+Exemplo #1 Exemplo de Função Anonima
+
+<?php
+echo preg_replace_callback('~-([a-z])~', function ($match) {
+    return strtoupper($match[1]);
+}, 'hello-world');
+// outputs helloWorld
+?>
+
+Exemplos
+
+// Exemplo 01
+
+function test($callback) {
+	// processo lento
+	$callback();
+
+}
+
+test(function() {
+	echo 'Terminou!';
+});
+
+
+// Exemplo 02
+
+$fn = function($a) {
+	var_dump($a);
+};
+
+$fn('Oi');
+
