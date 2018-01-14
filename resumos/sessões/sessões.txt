@@ -1,0 +1,94 @@
+SESSÕES
+
+O que são sessões e como criar variáveis de sessão? Defirente das variáveis locais, que são vistas em cada script, variáveis de sessão pode ser mantidas durante a sessão do usuário e podem ser 'exergadas' por todos os scripts.
+
+Quando se entra em um site, o servidor cria um pequeno arquivo de texto, um cookie, no seu navegador e no servidor e 'amarra' essas dois arquivos para poder identificar um usuário. Esse arquivo pode durar, normalmente, uns 20 minutos, porém depende do nível de segurança de um site. Esse arquivo também pode, via programação, ser destruído e, dessa forma, a sessão do usuário é interrompida.
+
+Por padrão uma sessão não é criada e, para iniciá-la, basta usar a palavra chave session_start(). A session é uma array super global e, caso queira criar uma chave, basta usar a sintaxe,
+
+$_SESSION['nome_chave'] = 'valor';
+
+Para recuperar o valor de uma página basta que antes seja definida uma session em outra página.
+
+// pagina01.php
+session_start();
+$_SESSION['nome'] = 'Luís';
+
+// pagina02.php
+session_start();
+echo $_SESSION['nome'];
+
+Nota: Caso queira buscar uma chave não existente em uma session que não tenha sido criada retornará 'undefined index'.
+
+Nota: Caso queira um início automático de sessão basta configurar no php.ini a opção session_auto_start. Em hospedagens compartilhadas talvez não seja possível realizar essa configuração.
+
+Nota: Na maioria das vezes é útil criar um arquivo de configuração que será lido por suas páginas e, desse modo, já iniciar a sessão do usuário.
+
+Apagar uma sessão
+Para se apagar uma sessão pode-se usar tanto unset ou session_unset(). Ao usar session_unset pode se especificar o nome da chave ou, quando especificado o array todo, apaga todas as chaves. Um outro comando é o session_destroy(). A diferença entre os dois comandos é que session_unset limpa os valores das chaves, porém o usuário permanece o mesmo, já o session_destroy limpa as chaves e troca o usuário, como se fosse um novo.
+
+Nota: Em navegadores antigos, como o IE8 ou 10, quando o nível de segurança é muito elevado, o navegador não permite escrever o arquivo de sessão e, dessa forma, não funcionár o session.
+
+ID de sessão
+É uma identificação única da sessão do usuário e, para retornar esse ID, basta executar,
+
+echo session_id(); 
+
+Nota: Nos navegadores com suporte ao HTML5 é possível usar session_store ou location_store para armazenar informações.
+
+Para se criar uma nova id de sessão basta usar o comando session_regenerate_id();
+
+session_regenerate_id();
+echo session_id(); 
+
+Mesmo ao trocar a session_id, as outras chaves, do array $_SESSION, permanecem com os seus valores.
+
+Nota: Caso um usuário mal intencionado consiga acesso ao ID de sessão é possível roubar a sessão do usuário. Recomenda-se gerar uma nova id de sessão com session_regenerate_id() para gerar uma nova ID a cada login de usuário. Geralmente, na página de validação de login.
+
+Para recuperar uma ID de uma sessão basta, antes do session_start(), session_id(ID)
+
+session_id('c31jqt5obal6kb52jftaqj94e4'); ou seja, a id da sessão
+
+// exemplo-05.php
+
+session_id('isvq2costaq4fudmnfengs5mi5');
+
+require_once 'config.php';
+
+session_regenerate_id();
+echo session_id();
+
+echo "<br>";
+print_r($_SESSION);
+
+Funções para sessão
+Para obter informações sobre a sessão.
+
+echo session_save_path(); // imprime /var/lib/php/sessions
+
+Obter o status da sessão (se foi iniciado, se existe)
+
+echo session_status(); // 2
+
+Exemplo
+
+$status = session_status(); 
+
+switch ($status) {
+	case 0:
+		echo 'Sessões estão desabilitadas.';
+		break;
+
+	case 1:
+		echo 'Sessões estão habilitadas, porém nenhuma ativa.';
+		break;
+
+	case 2:
+		echo 'Sessões estão habilitadas, e alguma está ativa.';
+		break;
+	
+	default:
+		echo 'Valor desconhecido.';
+		break;
+}
+
