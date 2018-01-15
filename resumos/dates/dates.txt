@@ -1,0 +1,3 @@
+Dates
+
+A função date não é sensível ao set_locale (configuração regional), ou seja, ele pega as configurações do servidor.
